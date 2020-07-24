@@ -2,12 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * player: 0. singleton. 
+           1.Movement:
+           2.Items:  
+powerUps: _1. scaleup 
+	    2. scaleDown
+ 	   3. coins
+	   4.fruit(optional)
+obstical: 
+area:
+spawner: _powerUp.
+   	_obstical.
+  	_tiles.
+             */
 public class TileBehavior : MonoBehaviour
 {
     
     public float Player_speed=3f;
     private CharacterController _controller;
     private float _gravity = 9.807f;
+    [SerializeField]
+    private Transform trr;
+    [SerializeField]
+    private float _scaleUp = 1;
+    [SerializeField]
+    private float _scaleDown =1; 
 
     void Start()
     {
@@ -17,6 +37,8 @@ public class TileBehavior : MonoBehaviour
     void Update()
     {
         Movement();
+        //trr.localScale += new Vector3(.1f, .1f, .1f);
+
     }
 
 
