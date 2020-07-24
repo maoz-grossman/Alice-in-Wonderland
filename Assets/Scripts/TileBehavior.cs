@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TileBehavior : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed=3f;
+    
+    public float Player_speed=3f;
     private CharacterController _controller;
     private float _gravity = 9.807f;
 
@@ -32,7 +32,7 @@ public class TileBehavior : MonoBehaviour
     private void Movement()
     {
         Vector3 direction = new Vector3(0, 0, 1);
-        Vector3 velocity = direction * _speed;
+        Vector3 velocity = direction * Player_speed;
 
         if (!_controller.isGrounded)
         {

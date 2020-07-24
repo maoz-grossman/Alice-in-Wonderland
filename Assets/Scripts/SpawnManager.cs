@@ -7,7 +7,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject _TilePrefab;
     private Vector3 _spawnPos;
-    private
     // Start is called before the first frame update
     void Start()
     {
