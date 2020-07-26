@@ -44,7 +44,7 @@ public class TileBehavior : MonoBehaviour
     void Update()
     {
         Movement();
-        //trr.localScale += new Vector3(.1f, .1f, .1f);
+        
 
     }
 
