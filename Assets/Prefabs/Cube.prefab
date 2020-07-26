@@ -191,7 +191,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ddb13f969129d41b907e00ecf55fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _TilePrefab: {fileID: 0}
+  Player_speed: 3
+  trr: {fileID: 0}
+  _scaleUp: 1
+  _scaleDown: 1
 --- !u!143 &2358975029214803512
 CharacterController:
   m_ObjectHideFlags: 0
