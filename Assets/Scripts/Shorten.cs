@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Shorten : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,11 +20,10 @@ public class Coin : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Entered");
             Player player = other.transform.GetComponent<Player>();
             if (player != null)
             {
-                player.AddCoin();
+                player.setShort();
             }
         }
         Destroy(this.gameObject);

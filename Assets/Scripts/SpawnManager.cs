@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _TilePrefab;
     private Vector3 _spawnPos;
 
     private int _round = 1;
-    private int _spawns = 0;
-    private bool flag = false;
     [SerializeField]
     private GameObject [] _obstacles;
     // Start is called before the first frame update
     void Start()
     {
-    
+        _spawnPos.z += 20;
+        StartCoroutine(SpawnRoutine());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
+    }
+
+    IEnumerator SpawnRoutine()
+    {
+        yield return new WaitForSeconds(0.3f);
+        int randomX = Random.Range(0, _obstacles.Length);
+        int randomside= Random.Range(-1, 2);
+        Vector3 newpos = new Vector3(0.36f+(((randomside)*3)*1.3f), -2, _spawnPos.z);
+        GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
+        _spawnPos.z += 12;
+        StartCoroutine(SpawnRoutine());
     }
 /*
     IEnumerator SpawnTileRoutine(){
@@ -38,7 +47,7 @@ public class SpawnManager : MonoBehaviour
             _round++;
     }
     */
-   
+
 
 
     /*

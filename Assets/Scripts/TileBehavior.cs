@@ -41,20 +41,22 @@ public class TileBehavior : MonoBehaviour
         _controller = GetComponent<CharacterController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Movement();
-        
-
     }
 
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Tile"||other.tag == "Arc")
+        if (other.tag == "Tile")
         {
             Debug.Log("Hey");
             Destroy(other.transform.parent.gameObject, 1.5f);
+        }
+        else if(other.tag == "Arc")
+        {
+            Destroy(other.gameObject, 0.2f);
         }
     }
 
@@ -73,11 +75,11 @@ public class TileBehavior : MonoBehaviour
             else
             {
                 int randomX = Random.Range(0, _obstacles.Length);
-                float rand_size = Random.Range(.3f, 1f);
+                float rand_size = Random.Range(.1f, .5f);
                 if (randomX == 0)
                 {
-                    float diff1 = (0.275f * ((int)(rand_size * 10f) - 3));
-                    float diff2 = (0.15f * ((int)(rand_size * 10f) - 3));
+                    float diff1 = (0.275f * ((rand_size * 10f) - 3f));
+                    float diff2 = (0.15f * ((rand_size * 10f) - 3f));
                     Vector3 newpos = new Vector3(1.3f + diff1 , -2.2f + diff2, _spawnPos.z);
                     GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
                     obstacle.transform.localScale *= rand_size;
@@ -89,6 +91,7 @@ public class TileBehavior : MonoBehaviour
 
     private void Movement()
     {
+        bool flag = false;
         Vector3 direction = new Vector3(0, 0, 1);
         Vector3 velocity = direction * Player_speed;
 
@@ -96,7 +99,22 @@ public class TileBehavior : MonoBehaviour
         {
             velocity.y -= _gravity;
         }
-        
+        float x = 0f;
+        if (Input.GetKeyDown(KeyCode.A) &&transform.position.x>-3.63f)
+        {
+            flag = true;
+            x= -4f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D) && transform.position.x < 4.36f)
+        {
+            flag = true;
+            x= 4f;
+        }
+
+        if(!flag)
         _controller.Move(velocity * Time.deltaTime);
+        else
+        _controller.Move(new Vector3(x,0,10*Time.deltaTime));
     }
 }
