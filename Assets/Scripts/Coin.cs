@@ -20,7 +20,6 @@ public class Coin : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Entered");
             Player player = other.transform.GetComponent<Player>();
             if (player != null)
             {

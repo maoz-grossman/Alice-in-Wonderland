@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tile
   - Arc
+  - End
   layers:
   - Default
   - TransparentFX
