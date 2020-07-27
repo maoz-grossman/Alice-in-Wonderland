@@ -35,12 +35,16 @@ public class TileBehavior : MonoBehaviour
     [SerializeField]
     private GameObject[] _obstacles;
 
+    private Animator _anim;
     void Start()
     {
         _spawnPos.z += 150;
         _spawnPos.y += 17.254f;
         _spawnPos.x += 5.896f;
-        _controller = GetComponent<CharacterController>();
+        //_controller = GetComponent<CharacterController>();
+        _anim = GetComponent<Animator>();
+        //transform.position += new Vector3(1.59f, 0, 4.600567f);
+
     }
 
     void FixedUpdate()
@@ -75,11 +79,12 @@ public class TileBehavior : MonoBehaviour
         bool flag = false;
         Vector3 direction = new Vector3(0, 0, 1);
         Vector3 velocity = direction * Player_speed;
-
+        /*
         if (!_controller.isGrounded)
         {
             velocity.y -= _gravity;
         }
+        */
         float x = 0f;
         if (Input.GetKeyDown(KeyCode.A) &&transform.position.x>-1.3f)
         {
@@ -93,10 +98,14 @@ public class TileBehavior : MonoBehaviour
             x= 1.8f;
         }
 
-        if(!flag)
-        _controller.Move(velocity * Time.deltaTime);
+        if (!flag)
+        {
+            //_controller.Move(velocity * Time.deltaTime);
+            trr.Translate(velocity * Time.deltaTime);
+        }
         else
-        _controller.Move(new Vector3(x,0,10*Time.deltaTime));
+            trr.Translate(new Vector3(x, 0, 10 * Time.deltaTime));
+       // _controller.Move(new Vector3(x,0,10*Time.deltaTime));
     }
 
     private void MakeTile()
@@ -110,15 +119,29 @@ public class TileBehavior : MonoBehaviour
         }
         else
         {
-            int randomX = Random.Range(0, _obstacles.Length);
-            float rand_size = Random.Range(.1f, .5f);
-            if (randomX == 0)
-            {
+                int randomX = Random.Range(0, _obstacles.Length-1);
+                float rand_size = Random.Range(.1f, .5f);
+                if (randomX == 0)
+                {
+                    float diff1 = (0.275f * ((rand_size * 10f) - 3f));
+                    float diff2 = (0.15f * ((rand_size * 10f) - 3f));
+                    Vector3 newpos = new Vector3(2.6323f + diff1, 0.55271f + diff2, _spawnPos.z);
+                    GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
+                    obstacle.transform.localScale *= rand_size;
+                }
+                else
+                {
                 float diff1 = (0.275f * ((rand_size * 10f) - 3f));
                 float diff2 = (0.15f * ((rand_size * 10f) - 3f));
-                Vector3 newpos = new Vector3(2.6323f + diff1, 0.55271f + diff2, _spawnPos.z);
-                GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
-                obstacle.transform.localScale *= rand_size;
+                _spawnPos.z += 9;
+                for (int i = 0; i <= 5; i++)
+                {
+                    Vector3 newpos = new Vector3(1.91f + diff1, 0.47f + diff2, _spawnPos.z+i*5);
+                    GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
+                    obstacle.transform.localScale *= rand_size;
+                }
+                
+                _spawnPos.z += 25;
             }
         }
         _round++;
