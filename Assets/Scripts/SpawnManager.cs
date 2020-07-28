@@ -26,11 +26,17 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnRoutine()
     {
         yield return new WaitForSeconds(0.05f);
-        int randomX = Random.Range(0, _obstacles.Length);
+        int randomX = Random.Range(0, 3);
         int randomside= Random.Range(-1, 2);
         Vector3 newpos = new Vector3(1.8f+(((randomside)*3)*1.3f), 0.6f, _spawnPos.z);
+        if (_round % 5 == 0)
+        {
+            randomX = Random.Range(3, _obstacles.Length);
+            newpos.y = 0;
+        }
         GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
         _spawnPos.z += 3;
+        _round++;
         StartCoroutine(SpawnRoutine());
     }
 /*

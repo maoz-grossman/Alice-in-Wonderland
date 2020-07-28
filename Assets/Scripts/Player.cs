@@ -25,14 +25,14 @@ public class Player : MonoBehaviour
 
     public void setGrow()
     {
-        if (_size < 14) {
+        if (_size < 10) {
 
             if(_size >= 7)
-                transform.localScale += new Vector3(.2f, .2f, .2f);
+                transform.localScale += new Vector3(.5f, .5f, .5f);
 
 
             else
-                transform.localScale += new Vector3(.1f, .1f, .1f);
+                transform.localScale += new Vector3(.5f, .5f, .5f);
 
             _size++;
         }
@@ -43,10 +43,10 @@ public class Player : MonoBehaviour
         if (_size > 0)
         {
             if (_size > 7)
-                transform.localScale -= new Vector3(.2f, .2f, .2f);
+                transform.localScale -= new Vector3(.5f, .5f, .5f);
             
             else
-                transform.localScale -= new Vector3(.1f, .1f, .1f);
+                transform.localScale -= new Vector3(.5f, .5f, .5f);
 
             _size--;
         }

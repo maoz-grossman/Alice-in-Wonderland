@@ -7,6 +7,9 @@ TagManager:
   - Tile
   - Arc
   - End
+  - Left
+  - Right
+  - Dead
   layers:
   - Default
   - TransparentFX
