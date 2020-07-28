@@ -23,7 +23,8 @@ public class Coin : MonoBehaviour
             Player player = other.transform.GetComponent<Player>();
             if (player != null)
             {
-                player.AddCoin();
+                int high = (int)transform.position.y;
+                player.AddCoin(high);
             }
         }
         Destroy(this.gameObject);

@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private Vector3 _spawnPos;
-
+    public static bool isSpawn = true;
+    private bool go = false;
     private int _round = 1;
     [SerializeField]
     private GameObject [] _obstacles;
@@ -13,14 +14,22 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         _spawnPos.z += 20;
+
+        if(isSpawn)
         StartCoroutine(SpawnRoutine());
+        else
+            go = true;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (go)
+        {
+            go = false;
+            StartCoroutine(SpawnRoutine());
+        }
     }
 
     IEnumerator SpawnRoutine()
@@ -28,68 +37,28 @@ public class SpawnManager : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         int randomX = Random.Range(0, 3);
         int randomside= Random.Range(-1, 2);
-        Vector3 newpos = new Vector3(1.8f+(((randomside)*3)*1.3f), 0.6f, _spawnPos.z);
-        if (_round % 5 == 0)
+        Vector3 newpos = new Vector3(1.8f+(((randomside)*3)*1.3f), 1f, _spawnPos.z);
+        if (_round % 7 == 0)
         {
             randomX = Random.Range(3, _obstacles.Length);
-            newpos.y = 0;
+                newpos.y = 0;
         }
+
+        if (randomX == 0)
+        {
+            randomside = Random.Range(1, 6);
+            newpos.y = randomside;
+        }
+        if ((int)(newpos.z) % 10 == 0 && randomX > 2)
+            newpos.z += 5;
+
         GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
         _spawnPos.z += 3;
         _round++;
-        StartCoroutine(SpawnRoutine());
+
+        if (isSpawn)
+            StartCoroutine(SpawnRoutine());
+        else
+            go = true;
     }
-/*
-    IEnumerator SpawnTileRoutine(){
-            yield return new WaitForSeconds(0.5f);
-            Instantiate(_TilePrefab, _spawnPos, _TilePrefab.transform.rotation);
-            _spawnPos.z += 6;
-            if (_round % 10 != 0)
-                StartCoroutine(SpawnTileRoutine());
-            else
-            {
-                StartCoroutine(SpawnObstacleRoutine());
-            }
-            _round++;
-    }
-    */
-
-
-
-    /*
-    IEnumerator SpawnObstacleRoutine()
-    {
-            yield return new WaitForSeconds(0.5f);
-            Instantiate(_TilePrefab, _spawnPos, _TilePrefab.transform.rotation);
-            int randomX = Random.Range(0, _obstacles.Length);
-            float rand_size = Random.Range(.3f, 1f);
-            if (randomX == 0)
-            {
-                Vector3 newpos = new Vector3(-10f + (rand_size * 3f), 1.52f, _spawnPos.z);
-                GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
-                obstacle.transform.localScale *= rand_size;
-                _spawnPos.z += 6;
-            }
-
-            if (randomX == 1)
-            {
-                //_spawnPos.z += 3f;
-                flag = true;
-                int diff = (int)(rand_size * 10) - 3;
-                StartCoroutine(SpawnRingsRoutine(rand_size, diff));
-            }
-
-
-            StartCoroutine(SpawnTileRoutine());
-    }
-
-    IEnumerator SpawnRingsRoutine(float size, int diff)
-    {
-        yield return new WaitForSeconds(0.05f);
-        Vector3 newpos = new Vector3(-10f + (size * 3f), 1.5f+(0.15f*diff), _spawnPos.z);
-        GameObject obstacle = Instantiate(_obstacles[1], newpos, _obstacles[1].transform.rotation);
-        obstacle.transform.localScale *= size;
-        _spawnPos.z += 6f;
-    }
-    */
 }

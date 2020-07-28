@@ -14,7 +14,7 @@ public class PlayerMotor : MonoBehaviour
     private bool left;
     private bool right;
     private bool grounded;
-    private bool dead=false;
+    public bool dead=false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,11 +37,11 @@ public class PlayerMotor : MonoBehaviour
         float x=0;
         Vector3 targetPosition = transform.position.z * Vector3.forward;
 
-        if (Input.GetKeyDown(KeyCode.A)&&!left)
+        if (movment.Instanse.SwipeLeft &&!left)
         {
             x = -3;
         }
-        if (Input.GetKeyDown(KeyCode.D) && !right)
+        if (movment.Instanse.SwipeLeft && !right)
         {
             x = 3;
         }
@@ -52,17 +52,7 @@ public class PlayerMotor : MonoBehaviour
         moveVector.y = 0f;
         moveVector.z = speed;
 
-        //cc.Move(moveVector * Time.deltaTime);
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
-        {
-            rb.AddForce(new Vector3(0, 8, 0), ForceMode.Impulse);
-            anim.SetBool("Jump", true);
-            grounded = false;
-        }
-        if(grounded)
         transform.Translate(new Vector3(moveVector.x, 0, moveVector.z * Time.deltaTime));
-        else
-        transform.Translate(new Vector3(moveVector.x, 0, 10*Time.deltaTime));
 
     }
 
@@ -96,6 +86,6 @@ public class PlayerMotor : MonoBehaviour
     IEnumerator deadCoroutine()
     {
         yield return new WaitForSeconds(3f);
-        Destroy(gameObject);
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
