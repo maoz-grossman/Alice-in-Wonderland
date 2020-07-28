@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 50f;
-    public AudioManager AM; 
+    public AudioManager AM;
+    private static bool again=false;
 
     public void PlayGame()
     {
@@ -22,7 +23,13 @@ public class MainMenu : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        if (!again)
+        {
+            again = true;
+            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        }
+        if (again)
+            Application.LoadLevel(1);
     }
 
     IEnumerator LoadLevel(int LevelIndex)

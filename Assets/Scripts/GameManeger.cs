@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManeger : MonoBehaviour
 {
@@ -26,5 +27,10 @@ public class GameManeger : MonoBehaviour
         score += points;
         scoreText.text = "SCORE: " + score;
 
+    }
+
+    public void menu()
+    {
+      Application.LoadLevel(0);
     }
 }
