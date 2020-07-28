@@ -6,10 +6,12 @@ public class Player : MonoBehaviour
 {
     private int _coins = 0;
     public int _size = 7;
+    public GameManeger gm;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GetComponent<GameManeger>();
     }
 
     // Update is called once per frame
@@ -20,7 +22,9 @@ public class Player : MonoBehaviour
 
     public void AddCoin(int num)
     {
-        _coins+=num;
+        gm.UpdateScore(num);
+        _coins +=num;
+      
     }
 
     public void setGrow()

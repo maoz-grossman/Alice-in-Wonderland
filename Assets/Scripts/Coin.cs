@@ -5,6 +5,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     // Start is called before the first frame update
+    //public GameManeger gm;
     void Start()
     {
         
@@ -25,6 +26,7 @@ public class Coin : MonoBehaviour
             {
                 int high = (int)transform.position.y;
                 player.AddCoin(high);
+              //  gm.UpdateScore(high);
             }
         }
         Destroy(this.gameObject);

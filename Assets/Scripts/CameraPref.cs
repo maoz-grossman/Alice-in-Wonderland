@@ -8,7 +8,9 @@ public class CameraPref : MonoBehaviour
     private Transform LookAt;
     [SerializeField]
     private Vector3 offset= new Vector3(0, 5.0f, -3f);
-    
+    static public float X_pos;
+    static public float Y_pos;
+    static public float Z_pos;
     void LateUpdate()
     {
         Vector3 desiredPostion = LookAt.position + offset;
