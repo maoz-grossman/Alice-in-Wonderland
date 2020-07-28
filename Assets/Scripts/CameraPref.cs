@@ -11,6 +11,7 @@ public class CameraPref : MonoBehaviour
     [SerializeField]
     private Transform LookAt;
     [SerializeField]
+<<<<<<< HEAD
     private Vector3 offset = new Vector3(0, 5.0f, -3f);
 
     // Start is called before the first frame update
@@ -30,5 +31,14 @@ public class CameraPref : MonoBehaviour
             desiredPostion.x = 1.76f+ X_pos;
             transform.position = desiredPostion;
         }
+=======
+    private Vector3 offset= new Vector3(0, 5.0f, -3f);
+    
+    void LateUpdate()
+    {
+        Vector3 desiredPostion = LookAt.position + offset;
+        desiredPostion.x = 1.76f;
+        transform.position = desiredPostion;
+>>>>>>> c02038da201b23890eb36fa62b2224eb608752c5
     }
 }

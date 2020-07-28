@@ -35,22 +35,17 @@ public class TileBehavior : MonoBehaviour
     [SerializeField]
     private GameObject[] _obstacles;
 
+    public Queue randoms = new Queue();
     private Animator _anim;
     void Start()
     {
         _spawnPos.z += 150;
         _spawnPos.y += 17.254f;
         _spawnPos.x += 5.896f;
-        //_controller = GetComponent<CharacterController>();
         _anim = GetComponent<Animator>();
-        //transform.position += new Vector3(1.59f, 0, 4.600567f);
 
     }
 
-    void FixedUpdate()
-    {
-       // Movement();
-    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -74,44 +69,10 @@ public class TileBehavior : MonoBehaviour
         if(other.tag=="Arc")
         Destroy(other.gameObject, 0.2f);
     }
-    /*
-    private void Movement()
-    {
-        bool flag = false;
-        Vector3 direction = new Vector3(0, 0, 1);
-        Vector3 velocity = direction * Player_speed;
-        
-        if (!_controller.isGrounded)
-        {
-            velocity.y -= _gravity;
-        }
-        
-        float x = 0f;
-        if (Input.GetKeyDown(KeyCode.A) &&transform.position.x>-1.3f)
-        {
-            flag = true;
-            x= -1.8f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.D) && transform.position.x < 4.7f)
-        {
-            flag = true;
-            x= 1.8f;
-        }
-
-        if (!flag)
-        {
-            //_controller.Move(velocity * Time.deltaTime);
-            trr.Translate(velocity * Time.deltaTime);
-        }
-        else
-            trr.Translate(new Vector3(x, 0, 10 * Time.deltaTime));
-       // _controller.Move(new Vector3(x,0,10*Time.deltaTime));
-    }
-    */
+ 
     private void MakeTile()
     {
-        int randomX = Random.Range(0, _obstacles.Length - 1);
+        int randomX = Random.Range(0, _obstacles.Length);
         if (!(_round % 3 == 0 && randomX != 0))
         {
             GameObject temp = Instantiate(_TilePrefab, _spawnPos, _TilePrefab.transform.rotation);
@@ -121,9 +82,10 @@ public class TileBehavior : MonoBehaviour
         }
         if (_round % 3 == 0)
         {
-            if (randomX == 0 || randomX == 1)
+            if (randomX == 0)
             {
-                float rand_size = Random.Range(.1f, .5f);
+                float rand_size = Random.Range(.3f, .5f);
+                randoms.Enqueue((int)rand_size);
                 if (randomX == 0)
                 {
                     float diff1 = (0.275f * ((rand_size * 10f) - 3f));
@@ -132,29 +94,16 @@ public class TileBehavior : MonoBehaviour
                     GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
                     obstacle.transform.localScale *= rand_size;
                 }
-                else
-                {
-                    float diff1 = (0.275f * ((rand_size * 10f) - 3f));
-                    float diff2 = (0.15f * ((rand_size * 10f) - 3f));
-                    _spawnPos.z += 9;
-                    for (int i = 0; i <= 5; i++)
-                    {
-                        Vector3 newpos = new Vector3(1.91f + diff1, 0.47f + diff2, _spawnPos.z + i * 5);
-                        GameObject obstacle = Instantiate(_obstacles[randomX], newpos, _obstacles[randomX].transform.rotation);
-                        obstacle.transform.localScale *= rand_size;
-                    }
-
-                    _spawnPos.z += 25;
-                }
             }
 
             else
             {
-                if (randomX == 2)
+                if (randomX == 1)
                 {
                     Instantiate(_obstacles[randomX], _spawnPos, _obstacles[randomX].transform.rotation);
                     int i = Random.Range(1, 5);
-                    _spawnPos.z += (3 * i);
+                    randoms.Enqueue(i);
+                    _spawnPos.z += (2.5f * i);
                 }
                 else
                 {
@@ -165,5 +114,15 @@ public class TileBehavior : MonoBehaviour
         }
         _round++;
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.gameObject.tag == "Arc")
+        {
+            PlayerMotor player = GetComponent<PlayerMotor>();
+            player.dead = true;
+            _anim.SetBool("Dead", true);
+        }
+    }
+
 }

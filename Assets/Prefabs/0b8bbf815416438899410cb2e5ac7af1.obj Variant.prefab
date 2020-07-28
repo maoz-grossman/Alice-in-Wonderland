@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2696503310997247438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8758252005984709744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2342775be2e89394198168cfa993adde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &3688973024772672529
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42,6 +30,18 @@ CapsuleCollider:
   m_Height: 286.16794
   m_Direction: 1
   m_Center: {x: -20.863293, y: 23.115515, z: 21.219238}
+--- !u!114 &2696503310997247438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758252005984709744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2342775be2e89394198168cfa993adde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &768535390836323705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3babd977f51160046aba8bcc9f40b935,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.79
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3babd977f51160046aba8bcc9f40b935,
         type: 3}
@@ -107,17 +107,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 3babd977f51160046aba8bcc9f40b935,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.002
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3babd977f51160046aba8bcc9f40b935,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.002
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3babd977f51160046aba8bcc9f40b935,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.002
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 3babd977f51160046aba8bcc9f40b935,
         type: 3}

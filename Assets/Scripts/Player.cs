@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private int _coins = 0;
-    private int _size = 7;
+    public int _size = 7;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +18,9 @@ public class Player : MonoBehaviour
         
     }
 
-    public void AddCoin()
+    public void AddCoin(int num)
     {
-        _coins++;
+        _coins+=num;
     }
 
     public void setGrow()
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
 
             else
-                transform.localScale += new Vector3(.5f, .5f, .5f);
+                transform.localScale += new Vector3(.8f, .8f, .8f);
 
             _size++;
         }
@@ -40,13 +40,13 @@ public class Player : MonoBehaviour
 
     public void setShort()
     {
-        if (_size > 0)
+        if (_size > 2)
         {
             if (_size > 7)
                 transform.localScale -= new Vector3(.5f, .5f, .5f);
             
             else
-                transform.localScale -= new Vector3(.5f, .5f, .5f);
+                transform.localScale -= new Vector3(0.8f, 0.8f, 0.8f);
 
             _size--;
         }
