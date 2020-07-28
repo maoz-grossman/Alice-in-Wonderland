@@ -5,4 +5,4 @@ About the game: In the game we get to play Alice from Lewis Carroll's book "Alic
 
 The object of the game is to go as far as possible
 
-while the player earns as much money as possible
+while the player trys to earn as much money as possible
