@@ -37,11 +37,11 @@ public class PlayerMotor : MonoBehaviour
         float x=0;
         Vector3 targetPosition = transform.position.z * Vector3.forward;
 
-        if (movment.Instanse.SwipeLeft &&!left)
+        if (movment.Instanse.SwipeLeft && !left)
         {
             x = -3;
         }
-        if (movment.Instanse.SwipeLeft && !right)
+        if (movment.Instanse.SwipeRight && !right)
         {
             x = 3;
         }
@@ -52,7 +52,19 @@ public class PlayerMotor : MonoBehaviour
         moveVector.y = 0f;
         moveVector.z = speed;
 
+        //cc.Move(moveVector * Time.deltaTime);
+      //  if (Input.GetKeyDown(KeyCode.Space) && grounded)
+      //  {
+       //     rb.AddForce(new Vector3(0, 8, 0), ForceMode.Impulse);
+       //     anim.SetBool("Jump", true);
+       //     grounded = false;
+      //  }
+
+
+        if(grounded)
         transform.Translate(new Vector3(moveVector.x, 0, moveVector.z * Time.deltaTime));
+        else
+        transform.Translate(new Vector3(moveVector.x, 0, 10*Time.deltaTime));
 
     }
 
