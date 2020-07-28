@@ -18,7 +18,7 @@ public class CameraPref : MonoBehaviour
     void LateUpdate()
     {
         Vector3 desiredPostion = LookAt.position + offset;
-        desiredPostion.x = 0;
-        transform.position = LookAt.position + offset;
+        desiredPostion.x = 1.76f;
+        transform.position = desiredPostion;
     }
 }
