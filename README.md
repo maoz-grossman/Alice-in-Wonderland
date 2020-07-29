@@ -8,7 +8,7 @@ The object of the game is to go as far as possible
 while the player trys to earn as much money as possible
 
 <h5> Genre</h5>
-__Action , Mobile game ,Endless runner__
+Action , Mobile game ,Endless runner
 
 <h3>
 How do you progress in the game?
@@ -19,7 +19,7 @@ The player can direct Alice by swiping  left and right.
 There are two kind of items the player can take:
 Coins which the player should collect, 
 and powerup that can help the player finish the game
-**type of powerups**
+<h5>type of powerups</h5>
 There are two types of powerups
 The first is a green mushroom that can scale up  the player,
 and the other is a red mushroom that can shrink the player.
