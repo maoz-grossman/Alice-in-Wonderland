@@ -1,16 +1,16 @@
-# EndlessMaze
+
 <h1>Alice in Wonderland </h1>
 <h3>
 About the game: 
 </h3>
-_We get to play Alice from Lewis Carroll's book "Alice in Wonderland".
+__We get to play Alice from Lewis Carroll's book "Alice in Wonderland".
 
 The object of the game is to go as far as possible
 
 while the player trys to earn as much money as possible
 
 <h5> Genre</h5>
-_Action , Mobile game ,Endless runner
+__Action , Mobile game ,Endless runner
 
 <h3>
 How do you progress in the game?
