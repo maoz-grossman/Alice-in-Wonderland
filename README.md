@@ -3,14 +3,12 @@
 <h3>
 About the game: 
 </h3>
-__We get to play Alice from Lewis Carroll's book "Alice in Wonderland".
-
+We get to play Alice from Lewis Carroll's book "Alice in Wonderland".
 The object of the game is to go as far as possible
-
 while the player trys to earn as much money as possible
 
 <h5> Genre</h5>
-__Action , Mobile game ,Endless runner
+__Action , Mobile game ,Endless runner__
 
 <h3>
 How do you progress in the game?
