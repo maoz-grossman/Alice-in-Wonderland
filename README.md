@@ -8,7 +8,7 @@ The object of the game is to go as far as possible
 while the player trys to earn as much money as possible
 
 <h5> Genre</h5>
-Action , Mobile game ,Endless runner
+Fantasy , Mobile game ,Endless runner
 
 <h3>
 How do you progress in the game?
@@ -36,7 +36,7 @@ As in order to get to certain coins that are high he must also take green mushro
 <p>
 <br>
 <br>
-   <img src="https://drive.google.com/uc?export=view&id=14eJzchcBLpfmDixTmxx51-WRNfAilNjf" />
+   <img src="https://drive.google.com/uc?export=view&id=14eJzchcBLpfmDixTmxx51-WRNfAilNjf" width="128" height="128" />
 </p>
 
 
