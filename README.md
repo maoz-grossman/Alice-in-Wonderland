@@ -36,8 +36,7 @@ As in order to get to certain coins that are high he must also take green mushro
 <p>
 <br>
 <br>
-   <img src="https://drive.google.com/uc?export=view&id=14glEAdR8mDU4UsWJyOb_dCfBSEQ7iihO"
-        style="width:250px;height:300px;" />
+   <img src="https://drive.google.com/uc?export=view&id=14eJzchcBLpfmDixTmxx51-WRNfAilNjf" />
 </p>
 
 
