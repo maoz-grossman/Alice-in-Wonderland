@@ -31,6 +31,6 @@ The player must beware of two types of obstacles:
 Obstacles where he has to shrink in order to cross the wall, and obstacles that can appear like hats.
 As in order to get to certain coins that are high he must also take green mushrooms
 
-![Image of MainScreen](https://drive.google.com/file/d/14glEAdR8mDU4UsWJyOb_dCfBSEQ7iihO/view?usp=sharing)
+![Image of MainScreen](https://drive.google.com/file/d/14glEAdR8mDU4UsWJyOb_dCfBSEQ7iihO/preview)
 
 
